@@ -9,10 +9,9 @@ generator client {
 }
 
 datasource db {
-  provider ="postgresql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-
 
 model Book {
   id            Int      @id @default(autoincrement())
@@ -21,7 +20,7 @@ model Book {
   publishedYear Int
   genre         String
   isAvailable   Boolean
-  borrows       Borrow[]  
+  borrows       Borrow[]
 }
 
 model User {
@@ -32,10 +31,10 @@ model User {
 }
 
 model Borrow {
-  id         Int      @id @default(autoincrement())
+  id         Int       @id @default(autoincrement())
   userId     Int
   bookId     Int
-  borrowDate DateTime
+  borrowDate DateTime  @default(now())
   returnDate DateTime?
 
   user User @relation(fields: [userId], references: [id])

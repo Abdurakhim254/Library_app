@@ -1,5 +1,4 @@
-import { IsInt, IsDate, IsOptional } from 'class-validator';
-import { Type } from 'class-transformer';
+import { IsInt, IsOptional } from 'class-validator';
 
 export class CreateBorrowDto {
   @IsInt()
@@ -8,12 +7,4 @@ export class CreateBorrowDto {
   @IsInt()
   bookId: number;
 
-  @Type(() => Date)
-  @IsDate()
-  borrowDate: Date;
-
-  @IsOptional()
-  @Type(() => Date)
-  @IsDate()
-  returnDate?: Date;
 }
